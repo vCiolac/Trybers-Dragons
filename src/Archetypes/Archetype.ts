@@ -11,7 +11,7 @@ abstract class Archetype {
     this._cost = 0;
   }
 
-  static createdArchetypesInstances(): number {
+  static createdArchetypeInstances(): number {
     throw new Error('Not implemented');
   }
 

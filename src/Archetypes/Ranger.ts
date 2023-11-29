@@ -2,20 +2,21 @@ import { EnergyType } from '../Energy';
 import Archetype from './Archetype';
 
 class Ranger extends Archetype {
-  readonly _energy: EnergyType = 'stamina';
-  private static instancesCount = 0;
+  private _energyType: EnergyType;
+  private static _instancesCount = 0;
 
   constructor(name: string) {
     super(name);
-    Ranger.instancesCount += 1;
+    this._energyType = 'stamina';
+    Ranger._instancesCount += 1;
   }
 
-  static createdArchetypesInstances(): number {
-    return Ranger.instancesCount;
+  static createdArchetypeInstances(): number {
+    return this._instancesCount;
   }
   
   get energyType(): EnergyType {
-    return this._energy;
+    return this._energyType;
   }
 }
 
