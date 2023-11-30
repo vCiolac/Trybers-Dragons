@@ -17,12 +17,12 @@ class Character implements Fighter {
 
   constructor(
     name: string,
-    archetype: Archetype = new Mage(name),
-    race: Race = new Elf(name, Character.random()),
+    archetype?: Archetype,
+    race?: Race,
   ) {
-    this._race = race;
+    this._race = race || new Elf(name, Character.random());
     this._name = name;
-    this._archetype = archetype;
+    this._archetype = archetype || new Mage(name);
     this._maxLifePoints = this.race.maxLifePoints / 2;
     this._lifePoints = this.race.maxLifePoints / 2;
     this._strength = Character.random();
