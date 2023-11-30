@@ -13,7 +13,7 @@ class Character implements Fighter {
   private _lifePoints: number;
   private _strength: number;
   private _defense: number;
-  private _energy: Energy | undefined;
+  private _energy: Energy;
 
   constructor(
     name: string,
@@ -28,10 +28,7 @@ class Character implements Fighter {
     this._strength = Character.random();
     this._defense = Character.random();
     this._dexterity = Character.random();
-    if (this._energy) {
-      this._energy.type_ = this._archetype.energyType;
-      this._energy.amount = Character.random();
-    }
+    this._energy = { type_: this._archetype.energyType, amount: Character.random() };
   }
 
   get name(): string { return this._name; }
@@ -50,10 +47,8 @@ class Character implements Fighter {
 
   get dexterity(): number { return this._dexterity; }
 
-  get energy(): Energy | undefined {
-    if (this._energy) {
-      return { type_: this._energy.type_, amount: this._energy.amount };
-    }
+  get energy(): Energy {
+    return { type_: this._energy.type_, amount: this._energy.amount };
   }
 
   public attack(enemy: Fighter): void {
