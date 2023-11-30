@@ -1,6 +1,6 @@
 import Archetype, { Mage } from './Archetypes';
 import Energy from './Energy';
-import Fighter from './Fighter';
+import Fighter, { SimpleFighter } from './Fighter';
 import Race, { Elf } from './Races';
 
 class Character implements Fighter {
@@ -51,12 +51,12 @@ class Character implements Fighter {
     return { type_: this._energy.type_, amount: this._energy.amount };
   }
 
-  public attack(enemy: Fighter): void {
+  public attack(enemy: SimpleFighter): void {
     const strength = this._strength;
     enemy.receiveDamage(strength);
   }
 
-  public special?(enemy: Fighter): void {
+  public special?(enemy: SimpleFighter): void {
     const strength = this._strength + Character.random();
     enemy.receiveDamage(strength);
   }
